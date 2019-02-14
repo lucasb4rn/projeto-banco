@@ -10,6 +10,12 @@ public class Cliente {
 	private Calendar dataNascimento;
 	private String conta;
 	private String agencia;
+	
+	
+	public Cliente (String nome) {
+		this.nome = nome;
+		
+	}
 
 	public void setNome(String nome) {
 		this.nome = nome;
@@ -51,4 +57,11 @@ public class Cliente {
 		return agencia;
 	}
 
+	@Override
+	public String toString() {
+		return "[nome=" + nome + "]";
+	}
+
+	
+	
 }
