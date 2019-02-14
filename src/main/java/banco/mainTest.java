@@ -12,10 +12,14 @@ public class mainTest {
 		ContaCorrente conta1 = new ContaCorrente(5000, c2);
 		
 		
+		conta.deposita(400);
 		conta.deposita(500);
-		conta.saca(8000);
+		conta.deposita(700);
+		conta.deposita(400);
+		conta.saca(700);
 		conta.saca(900);
-		conta.transfere(conta1, 8000);
+		conta.transfere(conta1, 500);
+		conta.extratoConta();
 		
 		System.out.println(conta);
 		System.out.println(conta1);

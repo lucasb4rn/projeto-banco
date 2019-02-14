@@ -1,19 +1,27 @@
 package banco;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public abstract class Conta {
 	
 	private double saldo;
 	private Cliente cliente;
+	private List<String> lista;
 	
 	
 	public Conta(double saldo, Cliente cliente) {
 		this.saldo = saldo;
 		this.cliente = cliente;
+		this.lista = new ArrayList<String>();
 	}
 
 	public void deposita(double valor) {
 		
+		lista.add("Deposito " + valor);
+		
 		this.saldo += valor;
+		
 	}
 	
 	public boolean saca(double valor) {
@@ -23,6 +31,8 @@ public abstract class Conta {
 			this.saldo = this.saldo - valor;
 			
 			System.out.println("Saldo atual: " +  this.saldo);
+			
+			lista.add("Saque " + valor);
 			
 			return true;
 			
@@ -47,12 +57,25 @@ public abstract class Conta {
 		} 
 		
 	}
+	
+	public void extratoConta(){
 		
+		for(String linhaEntrato : lista) {
+			
+			System.out.println("Operação: " + linhaEntrato);
+			
+		}
+		
+	}
+	
 
 	public double getSaldo() {
 		return saldo;
 	}
 
+	
+	
+	
 	
 	
 	@Override
