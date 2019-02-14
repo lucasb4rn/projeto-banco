@@ -16,19 +16,20 @@ public abstract class Conta {
 		this.saldo += valor;
 	}
 	
-	public double saca(double valor) {
+	public void saca(double valor) {
 		
-		if(valor <= saldo) {
+		if(valor <= saldo && valor > 0) {
 			
 			this.saldo = this.saldo - valor;
 			
+			System.out.println("Saldo atual: " +  this.saldo);
+			
 		} else {
 			
-			System.out.println();
+			System.out.println("Não é possivel fazer o saque " + valor);
 			
 		}
-		
-		return saldo;
+
 	}
 	
 	public void transfere(Conta origem, Conta destino) {}
