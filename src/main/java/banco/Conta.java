@@ -16,7 +16,7 @@ public abstract class Conta {
 		this.saldo += valor;
 	}
 	
-	public void saca(double valor) {
+	public boolean saca(double valor) {
 		
 		if(valor <= saldo && valor > 0) {
 			
@@ -24,15 +24,29 @@ public abstract class Conta {
 			
 			System.out.println("Saldo atual: " +  this.saldo);
 			
+			return true;
+			
 		} else {
 			
 			System.out.println("Não é possivel fazer o saque " + valor);
+			
+			return false;
 			
 		}
 
 	}
 	
-	public void transfere(Conta origem, Conta destino) {}
+	public void transfere(Conta contaDestino, double valorTransferencia) {
+		
+		boolean saca = this.saca(valorTransferencia);
+		
+		if(saca == true) {
+			
+			contaDestino.deposita(valorTransferencia);
+			
+		} 
+		
+	}
 		
 
 	public double getSaldo() {
