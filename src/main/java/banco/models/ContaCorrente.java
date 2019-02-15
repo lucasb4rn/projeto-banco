@@ -1,6 +1,5 @@
-package banco;
+package banco.models;
 
-import java.util.List;
 
 public class ContaCorrente extends Conta {
 

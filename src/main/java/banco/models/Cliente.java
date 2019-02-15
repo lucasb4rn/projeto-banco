@@ -1,4 +1,4 @@
-package banco;
+package banco.models;
 
 import java.util.Calendar;
 

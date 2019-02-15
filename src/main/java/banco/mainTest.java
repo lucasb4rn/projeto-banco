@@ -1,5 +1,8 @@
 package banco;
 
+import banco.models.Cliente;
+import banco.models.ContaCorrente;
+
 public class mainTest {
 	
 	public static void main(String[] args) {
@@ -20,6 +23,7 @@ public class mainTest {
 		conta.saca(900);
 		conta.transfere(conta1, 500);
 		conta.extratoConta();
+		conta1.extratoConta();
 		
 		System.out.println(conta);
 		System.out.println(conta1);
