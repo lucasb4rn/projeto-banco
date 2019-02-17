@@ -1,11 +1,16 @@
 package banco.models;
 
 import java.util.Calendar;
+import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 public class Cliente {
@@ -16,13 +21,25 @@ public class Cliente {
 	private String nome;
 	private String cpf;
 	private Integer idade;
-	private Calendar dataNascimento;
-	private String conta;
-	private String agencia;
+	
+	@Temporal(TemporalType.TIMESTAMP)
+	private Calendar dataCadastro;
+	
+	@Enumerated(EnumType.STRING)
+	private TipoCliente tipoCliente;
 	
 	public Cliente() {}
 	
-	
+	public Cliente(String nome, String cpf, Integer idade, Calendar calendar,
+			TipoCliente tipoCliente) {
+		this.nome = nome;
+		this.cpf = cpf;
+		this.idade = idade;
+		this.dataCadastro = calendar;
+		this.tipoCliente = tipoCliente;
+	}
+
+
 	public Cliente (String nome) {
 		this.nome = nome;
 		
@@ -40,9 +57,6 @@ public class Cliente {
 		this.idade = idade;
 	}
 
-	public void setDataNascimento(Calendar dataNascimento) {
-		this.dataNascimento = dataNascimento;
-	}
 
 	public String getNome() {
 		return nome;
@@ -56,22 +70,16 @@ public class Cliente {
 		return idade;
 	}
 
-	public Calendar getDataNascimento() {
-		return dataNascimento;
-	}
-
-	public String getConta() {
-		return conta;
-	}
-
-	public String getAgencia() {
-		return agencia;
-	}
-
+	
 	@Override
 	public String toString() {
-		return "[nome=" + nome + "]";
+		return "Cliente [nome=" + nome + ", cpf=" + cpf + ", idade=" + idade + ", dataCadastro=" + dataCadastro
+				+ ", tipoCliente=" + tipoCliente + "]";
 	}
+
+
+
+	
 
 	
 	

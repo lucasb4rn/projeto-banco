@@ -5,8 +5,10 @@ import java.util.List;
 
 public abstract class Conta {
 	
-	private double saldo;
+	private String conta;
+	private String agencia;
 	private Cliente cliente;
+	private double saldo;
 	private List<String> lista;
 	
 	

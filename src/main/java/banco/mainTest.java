@@ -1,21 +1,25 @@
 package banco;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
+
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 
 import banco.conf.JPAUtil;
 import banco.models.Cliente;
 import banco.models.ContaCorrente;
+import banco.models.TipoCliente;
 
 public class mainTest {
 	
 	public static void main(String[] args) {
 		
 		
+		Cliente c1 = new Cliente("Lucas", "365422005830", 24,  Calendar.getInstance() , TipoCliente.FISICO);
 		Cliente c2 = new Cliente("José");
 		
-		Cliente c1 = new Cliente("Lucas");
 		
 		ContaCorrente conta = new ContaCorrente(5000, c1);
 		ContaCorrente conta1 = new ContaCorrente(5000, c2);
@@ -29,8 +33,7 @@ public class mainTest {
 		conta.transfere(conta1, 500);
 		conta.extratoConta();
 		conta1.extratoConta();
-		
-		
+			
 		
 		
 		EntityManager em = new JPAUtil().getEntityManager();
