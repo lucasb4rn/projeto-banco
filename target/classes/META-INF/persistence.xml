@@ -12,6 +12,7 @@
 	 
    <!-- entidade mapeada -->
    <class>banco.models.Cliente</class>
+    <class>banco.models.Conta</class>
 
    <properties>
     <!-- dados da conexao -->
