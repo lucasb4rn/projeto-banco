@@ -24,7 +24,7 @@ public class Cliente {
 	private Integer idade;
 
 	@JoinColumn(unique = true)
-	@OneToOne(mappedBy="cliente") 
+	@OneToOne(mappedBy = "cliente")
 	private Conta conta;
 
 	@Temporal(TemporalType.TIMESTAMP)
@@ -94,5 +94,10 @@ public class Cliente {
 		this.conta = conta;
 	}
 
+	@Override
+	public String toString() {
+		return "Cliente [id=" + id + ", nome=" + nome + ", cpf=" + cpf + ", idade=" + idade + ", dataCadastro="
+				+ dataCadastro + ", tipoCliente=" + tipoCliente + "]";
+	}
 
 }

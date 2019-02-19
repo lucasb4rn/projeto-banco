@@ -3,9 +3,6 @@ package banco.models;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.DiscriminatorColumn;
-import javax.persistence.DiscriminatorType;
-import javax.persistence.DiscriminatorValue;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -14,6 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
+import javax.persistence.MappedSuperclass;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 @Entity
@@ -30,10 +29,8 @@ public class Conta {
 	@JoinColumn(unique = true)
 	private Cliente cliente;
 
-	private static double saldo;
-
-	@ElementCollection(targetClass = String.class)
-	private List<String> lista;
+	@OneToMany(mappedBy = "conta")
+	private List<Movimentacao> movimentacoes;
 
 	@Deprecated
 	public Conta() {
@@ -44,9 +41,20 @@ public class Conta {
 		this.numeroConta = numeroConta;
 		this.lista = new ArrayList<String>();
 	}
-	
-	
-	
+
+	public List<Movimentacao> getMovimentacoes() {
+		return movimentacoes;
+	}
+
+	public void setMovimentacoes(List<Movimentacao> movimentacoes) {
+		this.movimentacoes = movimentacoes;
+	}
+
+	private static double saldo;
+
+	@ElementCollection(targetClass = String.class)
+	private List<String> lista;
+
 	public Cliente getCliente() {
 		return cliente;
 	}
@@ -54,7 +62,6 @@ public class Conta {
 	public void setCliente(Cliente cliente) {
 		this.cliente = cliente;
 	}
-
 
 	public void deposita(double valor) {
 
@@ -112,5 +119,10 @@ public class Conta {
 		return saldo;
 	}
 
+	@Override
+	public String toString() {
+		return "Conta [idConta=" + idConta + ", numeroConta=" + numeroConta + ", agencia=" + agencia
+				+ ", movimentacoes=" + movimentacoes + ", lista=" + lista + "]";
+	}
 
 }
